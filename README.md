@@ -5,6 +5,15 @@
 [![NPM](https://img.shields.io/npm/v/react-document-order.svg)](https://www.npmjs.com/package/react-document-order)
 
 
+Table of contents:
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Demo Examples](#demo-examples)
+- [Alternatives](#alternatives)
+- [Invitation to Contribute](#invitation-to-contribute)
+
+
 ## Installation
 
 ```bash
@@ -114,13 +123,15 @@ const useUpDownBehaviour = (ref: RefObject<HTMLElement>) => {
 ```
 
 
-## Examples
+## Demo Examples
 
 The [`ReadmeExample`](example/src/ReadmeExample.tsx) is simply the code from the previous section.
 
 The [`TrivialExample`](example/src/TrivialExample.tsx) is a minimalistic demonstration that collections plain strings, as opposed to the HTML element refs used in the other examples.
 
 [`ToDoList`](example/src/ToDoList.tsx) shows a fully dynamic hierarchical demo (with appaling an appaling user experience—decent UX is left as an exercise for the reader).
+
+[**Click here for a live demo of all 3 examples!**](https://barnardb.github.io/react-document-order)
 
 They are all displayed in the example app, which you can run from the root directory like this:
 

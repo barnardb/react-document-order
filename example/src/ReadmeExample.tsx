@@ -17,7 +17,6 @@ const MyCollection = createOrderedValues<RefObject<HTMLElement>>()
 
 // The `OrderedValues` it returns provides the interface for the library.
 
-
 export interface OrderedValues<T> {
   Provider: React.FunctionComponent<{}>
   useRegister: (value: T) => void
@@ -63,6 +62,7 @@ function MyInput({ label, onChange }: { label: string, onChange?: (value: string
   return (
     <input
       placeholder={label}
+      style={{maxWidth: "20em", margin: "0.2em"}}
       onChange={onChange && (e => onChange(e.target.value))}
       ref={ref}
       {...useUpDownBehaviour(ref)}

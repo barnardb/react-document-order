@@ -6,8 +6,11 @@ const LabelOrder = createOrderedValues<string>()
 const Label = ({ name }: { name: string }) => {
   LabelOrder.useRegister(name)
   const next = LabelOrder.useValueAfter(name)
-  console.log("BEHOLD", name, next)
-  return <div>Label {name} followed by {next}</div>
+  return <div style={label}>
+    Label {name} followed by {
+      next || <span role="img" aria-label="nothing" style={nullIndicator}>❌</span>
+    }
+  </div>
 }
 
 export default function TrivialExample() {
@@ -20,7 +23,10 @@ export default function TrivialExample() {
         {middleLables.map(l => <Label key={l} name={l} />)}
       </LabelOrder.Provider>
       <Label name="bar" />
-      <button onClick={() => addMiddleLabel(`new middle label ${middleLables.length}`)}>Add</button>
+      <button onClick={() => addMiddleLabel(`mid ${middleLables.length}`)}>Add</button>
     </LabelOrder.Provider>
   )
 }
+
+const label = { margin: "0.4em", backgroundColor: "#def", padding: "0.4em", borderRadius: "1em" }
+const nullIndicator = { lineHeight: 1 }
