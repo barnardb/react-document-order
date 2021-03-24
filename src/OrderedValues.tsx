@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useMemo, useReducer } from 'react'
+import React, { useContext, useLayoutEffect, useMemo, useReducer } from 'react'
 import { Context, createContext } from './Context'
-import { firstValue, firstValueAfterReference, lastValue } from './operations'
+import { firstValue, firstValueAfterReference, firstValueBeforeReference, lastValue } from './operations'
 
 export interface OrderedValues<T> {
-  Context: React.FunctionComponent<{}>
+  Provider: React.FunctionComponent<{}>
   useRegister: (value: T) => void
 
   useValueAfter: (reference: T) => T | null | undefined
@@ -39,7 +39,7 @@ export function createOrderedValues<T>(): Readonly<
   }
 
   return {
-    Context: function OrderingContext({ children }) {
+    Provider: function OrderedValuesProvider({ children }) {
       const [changeIndicator, registerChange] = useReducer(
         (counter: number) => ++counter,
         0,
@@ -53,21 +53,21 @@ export function createOrderedValues<T>(): Readonly<
 
       // Add context to parent before children are mounted
       useMemo(() => {
-        if (parent) {
-          context.parent = parent
-          parent.nodes.push(context)
-        }
+        if (!parent) return
+        context.parent = parent
+        parent.nodes.push(context)
       }, [parent])
 
-      useEffect(() => {
-        return parent
-          ? () => {
-              // Remove context from parent
-              const i = parent.nodes.indexOf(context)
-              i > -1 && parent.nodes.splice(i, 1)
-              if (context.parent === parent) context.parent = null
-            }
-          : undefined
+      useLayoutEffect(() => {
+        if (!parent) return
+        registerChangeOnRoot(context)
+        return () => {
+          // Remove context from parent
+          const i = parent.nodes.indexOf(context)
+          i > -1 && parent.nodes.splice(i, 1)
+          if (context.parent === parent) context.parent = null
+        }
+
       }, [parent])
 
       return (
@@ -85,9 +85,11 @@ export function createOrderedValues<T>(): Readonly<
 
     useRegister: function useRegister(t: NonNullable<T>): void {
       const context = nonNull(useContext(reactContext))
-      useEffect(() => {
+      useMemo(() => {
         // Register ourself with the context
         context.nodes.push(t)
+      }, [context, t])
+      useLayoutEffect(() => {
         registerChangeOnRoot(context)
         return () => {
           // Remove ourself from the context
@@ -112,7 +114,7 @@ export function createOrderedValues<T>(): Readonly<
       reference: NonNullable<T>,
     ): NonNullable<T> | null | undefined {
       useContext(changeIndicatorReactContext)
-      return firstValueAfterReference(useRoot(), reference)
+      return firstValueBeforeReference(useRoot(), reference)
     },
 
     useFirst: function useFirst(): NonNullable<T> | null {
