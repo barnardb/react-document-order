@@ -27,7 +27,7 @@ const App = () => {
 
         <section style={section("#ca8")}>
           <h2>Readme Example</h2>
-          <p><a style={a} href="https://github.com/barnardb/react-document-order/blob/main/example/src/ReadmeExample.tsx">See the code in <code>.tsx</code></a></p>
+          <p><a style={a} href="https://github.com/barnardb/react-document-order/blob/main/example/src/ReadmeExample.tsx">See the code in <code>ReadmeExample.tsx</code></a></p>
           <p>Use the up and down arrow keys to move between fields,
           with and without an email address ending in "@example.com".</p>
           <ReadmeExample />
