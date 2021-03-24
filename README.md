@@ -129,7 +129,7 @@ The [`ReadmeExample`](example/src/ReadmeExample.tsx) is simply the code from the
 
 The [`TrivialExample`](example/src/TrivialExample.tsx) is a minimalistic demonstration that collections plain strings, as opposed to the HTML element refs used in the other examples.
 
-[`ToDoList`](example/src/ToDoList.tsx) shows a fully dynamic hierarchical demo (with appaling an appaling user experience—decent UX is left as an exercise for the reader).
+[`ToDoList`](example/src/ToDoList.tsx) shows a fully dynamic hierarchical demo (with an appalling user experience—decent UX is left as an exercise for the reader).
 
 [**Click here for a live demo of all 3 examples!**](https://barnardb.github.io/react-document-order)
 
