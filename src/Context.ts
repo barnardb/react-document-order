@@ -23,5 +23,5 @@ export function createContext<T>(
 }
 
 export function isContext<T>(node: Node<T>): node is Context<T> {
-  return typeof node === "object" && contextSignifier in node
+  return typeof node === 'object' && contextSignifier in node
 }

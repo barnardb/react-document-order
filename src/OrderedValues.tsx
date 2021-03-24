@@ -1,6 +1,11 @@
 import React, { useContext, useLayoutEffect, useMemo, useReducer } from 'react'
 import { Context, createContext } from './Context'
-import { firstValue, firstValueAfterReference, firstValueBeforeReference, lastValue } from './operations'
+import {
+  firstValue,
+  firstValueAfterReference,
+  firstValueBeforeReference,
+  lastValue,
+} from './operations'
 
 export interface OrderedValues<T> {
   Provider: React.FunctionComponent<{}>
@@ -67,7 +72,6 @@ export function createOrderedValues<T>(): Readonly<
           i > -1 && parent.nodes.splice(i, 1)
           if (context.parent === parent) context.parent = null
         }
-
       }, [parent])
 
       return (
