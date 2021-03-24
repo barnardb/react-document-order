@@ -2,7 +2,7 @@
 
 > Allows React components to contribute to a list that is maintained in the document order of those components. Can be used for example to construct forms with dynamic nested components with rich linking behaviours between neighbouring controls in the sequencial document order rather than in control mount order. Works with standard React for the Web, and with React Native.
 
-[![NPM](https://img.shields.io/npm/v/react-document-order.svg)](https://www.npmjs.com/package/react-document-order) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-document-order.svg)](https://www.npmjs.com/package/react-document-order)
 
 
 ## Installation
