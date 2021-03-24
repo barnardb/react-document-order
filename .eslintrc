@@ -6,7 +6,8 @@
     "plugin:prettier/recommended",
     "prettier/standard",
     "prettier/react",
-    "plugin:@typescript-eslint/eslint-recommended"
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "env": {
     "node": true
@@ -16,7 +17,9 @@
     "ecmaFeatures": {
       "legacyDecorators": true,
       "jsx": true
-    }
+    },
+    "project": "tsconfig.json",
+    "sourceType": "module"
   },
   "settings": {
     "react": {
@@ -24,6 +27,10 @@
     }
   },
   "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "curly": ["error", "multi", "consistent"],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "space-before-function-paren": 0,
     "react/prop-types": 0,
     "react/jsx-handler-names": 0,
